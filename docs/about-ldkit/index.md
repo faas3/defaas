@@ -1,3 +1,3 @@
-# About DeFaaS
+# About FaaS3
 
 todo

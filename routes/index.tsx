@@ -15,7 +15,7 @@ export default function Home(ctx: PageProps<Data>) {
         <link rel="stylesheet" href={`/gfm.css?build=${__FRSH_BUILD_ID}`} />
       </Head>
       <div class="flex flex-col items-center">
-        <Jumbo>DeFaaS</Jumbo>
+        <Jumbo>FaaS3</Jumbo>
         <p class="italic text-center text-2xl md:text-5xl font-bold leading-tight pb-7 md:pb-10">
           <span class="text-red-800">FaaS Based on Blockchain</span> toolkit
           <br />

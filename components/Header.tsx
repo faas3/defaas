@@ -19,7 +19,7 @@ function Logo() {
         class="flex items-center hover:text-gray-700 dark:hover:text-white pr-4"
       >
         <IconLDkit />
-        <span class="pb-1 pl-2">DeFaaS</span>
+        <span class="pb-1 pl-2">FaaS3</span>
       </a>
     </h1>
   );
