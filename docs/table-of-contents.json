@@ -1,0 +1,18 @@
+{
+  "about-ldkit": {
+    "title": "About DeFaaS"
+  },
+  "getting-started": {
+    "title": "Getting Started"
+  },
+  "components": {
+    "title": "Components",
+    "pages": [
+
+    ]
+  },
+  "how-to": {
+    "title": "How To",
+    "pages": []
+  }
+}

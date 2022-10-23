@@ -1,71 +1,151 @@
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { graphql } from "@/utils/shopify.ts";
-import { tw } from "twind";
+import { App } from "../components/App.tsx";
+import { Jumbo } from "../components/Jumbo.tsx";
+import { IconArrowRight } from "../components/Icons.tsx";
+import { gfm } from "../utils/markdown.ts";
+import axiod from "https://deno.land/x/axiod/mod.ts";
 
-import { Footer } from "@/helpers/Footer.tsx";
-import { Header } from "@/components/Header.tsx";
-import { List, Product } from "../utils/types.ts";
+export default function Home(ctx: PageProps<Data>) {
+  const { data } = ctx;
 
-export default function Home() {
   return (
-    <>
+    <App activeLink="/">
       <Head>
-        <title>FaaS Based on Blockchain</title>
+        <link rel="stylesheet" href={`/gfm.css?build=${__FRSH_BUILD_ID}`} />
       </Head>
-      <img
-        src="/background.png"
-        alt="bg"
-        class="absolute top-0 left-0 w-full min-h-screen -z-10 bg-gray-900 object-cover"
-      />
-      <Header />
-      <div
-        class="w-11/12 max-w-5xl mx-auto mt-28"
-        aria-labelledby="information-heading"
-      >
-        <p class="my-10">
-          Welcome to NonceGeek Deno Micro FaaS: FaaS Based on Blockchain
+      <div class="flex flex-col items-center">
+        <Jumbo>DeFaaS</Jumbo>
+        <p class="italic text-center text-2xl md:text-5xl font-bold leading-tight pb-7 md:pb-10">
+          <span class="text-red-800">FaaS Based on Blockchain</span> toolkit
+          <br />
+          for <span class="text-red-800">Web3</span> developers
         </p>
+        <div class="flex flex-row">
+          <pre class="py-4 md:py-6 px-6 bg-gray-800 text-white rounded-l-lg">
+            Try it!
+          </pre>
+          <a
+            href="https://restninja.io/"
+            target="_blank"
+            class="block bg-red-800 rounded-r-lg text-white p-4 md:p-6"
+          >
+            <IconArrowRight />
+          </a>
+        </div>
 
-        <li>transparent, open, and immutable on-chain functions</li>
-        <p>
-          All code snippets, functions, and modules are stored in the Arweave
-          blockchain, and dynamically loaded into memory while the FaaS service
-          is running. The functions are transparent, open, and immutable.
-          Therefore, it is possible to share the uploaded functions among users
-          through an open function market, thus making F (in FaaS) a Lego
-          building block.
+        <Functions funcs={data.funcs} />
+        <p class="text-center pt-4 md:pt-8 pb-5 md:pb-10">
+          <a
+            href="/docs"
+            class="text-l md:text-xl flex flex-row gap-4 bg-red-800 rounded text-white p-4 md:p-6"
+          >
+            <span>Read the documentation</span> <IconArrowRight />
+          </a>
         </p>
-        <br></br>
-        <li>allow state storage</li>
-        <p>
-          Through the functions, users can store the state on each blockchain
-          network, and read the state from it. The authentication is realized
-          through the signature that follows the Ethereum standard, which breaks
-          through the stateless limitation of the traditional FaaS system.
-        </p>
+      </div>
+      <Features />
+    </App>
+  );
+}
 
-        <br></br>
+interface FuncMeta {
+  filename: string;
+  language: string;
+  content: string;
+  visiable: string;
+  author: string;
+}
 
-        <h3>Usage</h3>
-        <script src="https://gist.github.com/zhenfeng-zhu/3581c289773ad8afcd9fe7ebdddeeb9f.js">
-        </script>
+interface Data {
+  funcs: Array<FuncMeta>;
+}
 
-        <br></br>
-        <h3>Avaliable function list</h3>
-        <br></br>
+export const handler: Handlers<Data> = {
+  async GET(_req, ctx) {
+    const data: Data = {
+      funcs: [],
+    };
 
-        <script src="https://gist.github.com/zhenfeng-zhu/51ceeefe042a23dc6c0f218ec415ff16.js">
-        </script>
+    const gist_id = "51ceeefe042a23dc6c0f218ec415ff16";
+    const result = await axiod.get(`https://api.github.com/gists/${gist_id}`, {
+      // headers: {
+      //   "Authorization": "Bearer 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"
+      // }
+    });
+    const files = result.data.files;
 
-        <h2 id="information-heading" class="sr-only">
-          Function List
-        </h2>
-        <div class="grid grid-cols-1 gap-8 sm:!gap-x-10 sm:!grid-cols-2 lg:!grid-cols-3 lg:!gap-x-12 lg:!gap-y-10">
-          WIP
+    for (let key of Object.keys(files)) {
+      data.funcs.push({
+        filename: files[key].filename,
+        language: files[key].language,
+        content: files[key].content,
+        visiable: "public",
+        author: "zhenfeng-zhu",
+      });
+    }
+
+    return ctx.render(data);
+  },
+};
+
+function Functions(props: Data) {
+  const funcs = props.funcs;
+
+  return funcs.map((item: FuncMeta, index: number) => {
+    return (
+      <div class="mt-10 md:mt-20 grid md:grid-cols-2 gap-2 md:gap-0">
+        <div>
+          <h2 class="pb-5 text-2xl md:text-4xl font-black">
+            {index + 1}. {item.filename}
+          </h2>
+          <p class="md:mx-10 text-l md:text-xl">
+            Specify entities to retrieve and their properties. Various data
+            types, optional properties, arrays and language annotated literals
+            are supported.
+          </p>
+        </div>
+        <div class="pb-4">
+          <Markdown markdown={"\n\n" + item.content + "\n\n"} />
         </div>
       </div>
-      <Footer />
-    </>
+    );
+  });
+}
+
+function Markdown({ markdown }: { markdown: string }) {
+  const preMarkdown = `\`\`\`ts${markdown}\`\`\``;
+  const html = gfm.render(preMarkdown);
+  return (
+    <div
+      class="markdown-body max-w-[90vw]"
+      data-color-mode="auto"
+      data-light-theme="light"
+      data-dark-theme="dark"
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
+}
+
+function Features() {
+  return (
+    <div class="grid md:grid-cols-4 gap-4 pb-20">
+      <div class="p-2">
+        <h2 class="text-xl font-black">Next-gen serverless</h2>
+        {/* <p>Query RDF data from any source effortlessly.</p> */}
+      </div>
+      <div class="p-2">
+        <h2 class="text-xl font-black">First class TypeScript</h2>
+        {/* <p>Best in class developer experience. Fully typed workflow.</p> */}
+      </div>
+      <div class="p-2">
+        <h2 class="text-xl font-black">Deploy anywhere</h2>
+        {/* <p>LDkit runs in browser, Deno and Node.</p> */}
+      </div>
+      <div class="p-2">
+        <h2 class="text-xl font-black">On-chain functions</h2>
+        {/* <p>Compatible or built upon all the popular RDF/JS libraries</p> */}
+      </div>
+    </div>
   );
 }
