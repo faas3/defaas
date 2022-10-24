@@ -9,12 +9,12 @@ export function Title({ children }: TitleProps) {
     ? (
       <title>
         {children}
-        {" · LDkit"}
+        {" · FaaS3"}
       </title>
     )
     : (
       <title>
-        {"LDkit · Linked Data query toolkit for TypeScript developers"}
+        {"FaaS3 · FaaS Based on Blockchain toolkit for Web3 developers"}
       </title>
     );
 }

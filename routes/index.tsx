@@ -5,6 +5,7 @@ import { Jumbo } from "../components/Jumbo.tsx";
 import { IconArrowRight } from "../components/Icons.tsx";
 import { gfm } from "../utils/markdown.ts";
 import axiod from "https://deno.land/x/axiod/mod.ts";
+import { Markdown } from "../components/Markdown.tsx";
 
 export default function Home(ctx: PageProps<Data>) {
   const { data } = ctx;
@@ -113,19 +114,7 @@ function Functions(props: Data) {
   });
 }
 
-function Markdown({ markdown }: { markdown: string }) {
-  const preMarkdown = `\`\`\`ts${markdown}\`\`\``;
-  const html = gfm.render(preMarkdown);
-  return (
-    <div
-      class="markdown-body max-w-[90vw]"
-      data-color-mode="auto"
-      data-light-theme="light"
-      data-dark-theme="dark"
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
-  );
-}
+
 
 function Features() {
   return (

@@ -8,6 +8,8 @@ import * as $1 from "./routes/_404.tsx";
 import * as $2 from "./routes/docs/[...slug].tsx";
 import * as $3 from "./routes/gfm.css.ts";
 import * as $4 from "./routes/index.tsx";
+import * as $5 from "./routes/upload.tsx";
+import * as $$0 from "./islands/Loader.tsx";
 
 const manifest = {
   routes: {
@@ -16,8 +18,11 @@ const manifest = {
     "./routes/docs/[...slug].tsx": $2,
     "./routes/gfm.css.ts": $3,
     "./routes/index.tsx": $4,
+    "./routes/upload.tsx": $5,
   },
-  islands: {},
+  islands: {
+    "./islands/Loader.tsx": $$0,
+  },
   baseUrl: import.meta.url,
   config,
 };

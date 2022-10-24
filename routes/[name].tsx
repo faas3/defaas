@@ -4,7 +4,7 @@ import { Jumbo } from "../components/Jumbo.tsx";
 export default function Home() {
   return (
     <App activeLink="/">
-      <Jumbo>LDkit</Jumbo>
+      <Jumbo>FaaS3</Jumbo>
       <p class="text-center">Under construction!</p>
     </App>
   );

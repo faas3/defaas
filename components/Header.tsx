@@ -36,7 +36,7 @@ const menuItems = [
   },
   {
    title: "Upload",
-   url: "https://faas.noncegeek.com",
+   url: "/upload",
   },
   {
     title: "GitHub",
