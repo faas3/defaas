@@ -12,7 +12,7 @@ export function handler() {
 `;
 
   return (
-    <App activeLink="/">
+    <App activeLink="/upload">
       <MLoader />
     </App>
   );
