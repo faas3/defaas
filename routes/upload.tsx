@@ -6,7 +6,7 @@ import MLoader from "../islands/Loader.tsx";
 
 export default function Upload() {
   return (
-    <App activeLink="/upload">
+    <App activeLink="/functions">
       <MLoader />
     </App>
   );

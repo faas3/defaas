@@ -31,13 +31,19 @@ const menuItems = [
     url: "/",
   },
   {
-    title: "Documentation",
-    url: "/docs",
+    title: "Functions",
+    url: "functions",
   },
   {
     title: "Upload",
     url: "/upload",
   },
+  {
+    title: "Documentation",
+    url: "/docs",
+  },
+
+
   {
     title: "GitHub",
     url: "https://github.com/zhenfeng-zhu/deno_mircro_faas",

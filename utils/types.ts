@@ -1,7 +1,17 @@
-export interface Func {
-  token_id: number;
-  chain_type: string;
-  content: string;
-  txn_hash: string;
-  source_gist_id: string;
+export interface FuncMeta {
+  id?: number;
+  source_gist_id?: string;
+  func_name?: string;
+  desc?: string;
+  content?: string;
+
+  token_id?: number;
+  contract?: string;
+  chain?: string;
+  txn_hash?: string;
+
+  owner_addr?: string;
+  owner?: string;
+
+  created_at?: string;
 }

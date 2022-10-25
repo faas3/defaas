@@ -22,9 +22,7 @@ export class Database {
     ).select(
       "*",
     );
-
-    console.log(error);
-    console.log(onchain_functions);
+    return onchain_functions;
   }
 
   async getByTokenId() {

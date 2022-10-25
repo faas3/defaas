@@ -4,26 +4,23 @@ import { Head } from "$fresh/runtime.ts";
 import * as gfm from "https://deno.land/x/gfm@0.1.23/mod.ts";
 import axiod from "https://deno.land/x/axiod/mod.ts";
 import { Database } from "../commuction/database.ts";
-import { Func } from "../utils/types.ts";
+import { FuncMeta } from "../utils/types.ts";
 import { ethers, providers } from "https://cdn.skypack.dev/ethers";
-import { contract } from "../commuction/contract.ts";
+import { contract, yourContract } from "../commuction/contract.ts";
 
 const db = new Database();
-async function addToPg(files: any, gist_id: string) {
-  const funcs = new Array<Func>();
-  for (let key of Object.keys(files)) {
-    funcs.push(
-      {
-        token_id: 1,
-        chain_type: "polygon",
-        content: files[key].content,
-        txn_hash: "",
-        source_gist_id: gist_id,
-      },
-    );
-  }
+async function addToPg(func: FuncMeta) {
+  await db.insert([func]);
+}
 
-  await db.insert(funcs);
+async function addToChain(ethereum: any, func: FuncMeta) {
+  const provider = new providers.Web3Provider(ethereum);
+  await provider.send("eth_requestAccounts", []);
+  const signer = provider.getSigner();
+  const contract2 = contract.connect(signer);
+
+  const txn = await contract2.mintWithMeta(JSON.stringify(func));
+  return txn;
 }
 
 export default function MLoader() {
@@ -39,25 +36,36 @@ export default function MLoader() {
           //   51ceeefe042a23dc6c0f218ec415ff16
 
           const res = await axiod.get(`https://api.github.com/gists/${gist}`);
-          console.log(res.data);
           const files = res.data.files;
           //   await addToPg(files, gist);
-          const nfts = await contract.purpose();
-          console.log(nfts);
+          const value = Object.values(files)[0];
 
-          const provider = new providers.Web3Provider(ethereum);
-          await provider.send("eth_requestAccounts", []);
-          const signer = provider.getSigner();
-          const c = contract.connect(signer);
+          const metadata = {
+            source_gist_id: gist,
+            func_name: value.filename,
+            desc: res.data.description,
+            content: value.content,
 
-          //   const a = await c.mintWithMeta(JSON.stringify(files));
-          //   console.log(a)
-          const meta = await c.faasCodes(
-            "0x80062eE8E85fD91D82EdDdfa059f05b11863768E",
-            3,
-          );
+            contract: yourContract.address,
+            chain: "polygon",
 
-          alert(meta);
+            owner: res.data.owner.login,
+          };
+
+          const txn = await addToChain(ethereum, metadata);
+          console.log("===============>");
+          console.log(txn);
+
+          const func: FuncMeta = {
+            ...metadata,
+            txn_hash: txn.hash,
+            owner_addr: txn.from,
+            token_id: 1,
+          }
+
+          await addToPg(func)
+
+          alert(JSON.stringify(txn));
         }}
       >
         <label>

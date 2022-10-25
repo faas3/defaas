@@ -35,7 +35,6 @@ export default function Home(ctx: PageProps<Data>) {
           </a>
         </div>
 
-        <Functions funcs={data.funcs} />
         <p class="text-center pt-4 md:pt-8 pb-5 md:pb-10">
           <a
             href="/docs"
@@ -48,70 +47,6 @@ export default function Home(ctx: PageProps<Data>) {
       <Features />
     </App>
   );
-}
-
-interface FuncMeta {
-  filename: string;
-  language: string;
-  content: string;
-  visiable: string;
-  author: string;
-}
-
-interface Data {
-  funcs: Array<FuncMeta>;
-}
-
-export const handler: Handlers<Data> = {
-  async GET(_req, ctx) {
-    const data: Data = {
-      funcs: [],
-    };
-
-    const gist_id = "51ceeefe042a23dc6c0f218ec415ff16";
-    const result = await axiod.get(`https://api.github.com/gists/${gist_id}`, {
-      // headers: {
-      //   "Authorization": "Bearer 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"
-      // }
-    });
-    const files = result.data.files;
-
-    for (let key of Object.keys(files)) {
-      data.funcs.push({
-        filename: files[key].filename,
-        language: files[key].language,
-        content: files[key].content,
-        visiable: "public",
-        author: "zhenfeng-zhu",
-      });
-    }
-
-    return ctx.render(data);
-  },
-};
-
-function Functions(props: Data) {
-  const funcs = props.funcs;
-
-  return funcs.map((item: FuncMeta, index: number) => {
-    return (
-      <div class="mt-10 md:mt-20 grid md:grid-cols-2 gap-2 md:gap-0">
-        <div>
-          <h2 class="pb-5 text-2xl md:text-4xl font-black">
-            {index + 1}. {item.filename}
-          </h2>
-          <p class="md:mx-10 text-l md:text-xl">
-            Specify entities to retrieve and their properties. Various data
-            types, optional properties, arrays and language annotated literals
-            are supported.
-          </p>
-        </div>
-        <div class="pb-4">
-          <Markdown markdown={"\n\n" + item.content + "\n\n"} />
-        </div>
-      </div>
-    );
-  });
 }
 
 function Features() {

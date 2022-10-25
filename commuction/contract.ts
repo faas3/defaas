@@ -7,7 +7,7 @@ const provider = new ethers.providers.JsonRpcProvider(
   infuraID,
 );
 
-const yourContract = {
+export const yourContract = {
   "address": "0x99aC0BB035245db69087bB3C4cb08fd5455d9d19",
   "abi": [
     {
