@@ -50,8 +50,8 @@ export default function MLoader() {
           const signer = provider.getSigner();
           const c = contract.connect(signer);
 
-        //   const a = await c.mintWithMeta(JSON.stringify(files));
-        //   console.log(a)
+          //   const a = await c.mintWithMeta(JSON.stringify(files));
+          //   console.log(a)
           const meta = await c.faasCodes(
             "0x80062eE8E85fD91D82EdDdfa059f05b11863768E",
             3,

@@ -114,8 +114,6 @@ function Functions(props: Data) {
   });
 }
 
-
-
 function Features() {
   return (
     <div class="grid md:grid-cols-4 gap-4 pb-20">

@@ -35,8 +35,8 @@ const menuItems = [
     url: "/docs",
   },
   {
-   title: "Upload",
-   url: "/upload",
+    title: "Upload",
+    url: "/upload",
   },
   {
     title: "GitHub",
