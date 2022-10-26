@@ -30,7 +30,7 @@ export class Database {
       "*",
     ).eq("id", id);
 
-    return data
+    return data;
   }
 
   async getByFuncName(name: string) {
@@ -38,7 +38,7 @@ export class Database {
       "*",
     ).eq("func_name", name);
 
-    return data
+    return data;
   }
 
   async insert(data: Array<Func>) {

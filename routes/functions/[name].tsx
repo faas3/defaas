@@ -5,6 +5,7 @@ import { FuncMeta } from "../../utils/types.ts";
 import { Database } from "../../commuction/database.ts";
 import { Markdown } from "../../components/Markdown.tsx";
 import { Head } from "$fresh/runtime.ts";
+import Runner from "../../islands/Runner.tsx";
 
 interface Data {
   func: FuncMeta;
@@ -29,7 +30,7 @@ export default function DocsPage(ctx: PageProps<Data>) {
       <Head>
         <link rel="stylesheet" href={`/gfm.css?build=${__FRSH_BUILD_ID}`} />
       </Head>
-      <div class="w-11/12 mt-16 max-w-5xl mx-auto flex items-center justify-between relative">
+      <div class="w-11/12 mt-16 max-w-4xl mx-auto flex items-center justify-between relative">
         <a
           href="/functions"
           class="flex items-center gap-2 text-gray-400 hover:text-gray-800 transition-colors duration-200"
@@ -50,15 +51,15 @@ export default function DocsPage(ctx: PageProps<Data>) {
         </a>
       </div>
 
-      <div class="w-11/12 max-w-5xl mx-auto mt-8  lg:gap-x-16">
+      <div class="w-11/12 max-w-4xl mx-auto mt-8  lg:gap-x-16">
         <div>
           <div class="flex flex-col gap-4">
             <div class="w-full flex items-center justify-between gap-4">
               <hgroup>
-                <h2 class="text-xl lg:!text-2xl font-semibold text-gray-800">
+                <h2 class="text-3xl font-bold text-gray-800">
                   {func.func_name}
                 </h2>
-                <h3 class="text-gray-500 text-base leading-tight">
+                <h3 class="mt-6 text-gray-500 text-base leading-tight">
                   {func.owner}
                 </h3>
               </hgroup>
@@ -81,43 +82,15 @@ export default function DocsPage(ctx: PageProps<Data>) {
             </div>
           </section>
 
-          <section
-            aria-labelledby="information-heading"
-            class="mt-12 pt-6 border-t-1 border-gray-200"
-          >
-            <h2 id="information-heading" class="sr-only">
-              function content
-            </h2>
-
-            <div class="mt-4 space-y-6">
-              <Markdown markdown={"\n\n" + func.content + "\n\n"} />
-            </div>
-          </section>
+          <div class="mt-6 space-y-6">
+            <Markdown markdown={"\n\n" + func.content + "\n\n"} />
+          </div>
 
           <section
             aria-labelledby="information-heading"
             class="mt-12 pt-6 border-t-1 border-gray-200"
           >
-            <h2 id="information-heading" class="sr-only">
-              function content
-            </h2>
-
-            <div class="mt-4 space-y-6">
-              <input
-                type="email"
-                id="UserEmail"
-                placeholder="john@rhcp.com"
-                class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
-              />
-              <a
-                class="inline-block rounded bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
-                href="/download"
-              >
-                <span class="block rounded-sm bg-white px-8 py-3 text-sm font-medium hover:bg-transparent">
-                  Download
-                </span>
-              </a>
-            </div>
+            <Runner func={func} />
           </section>
         </div>
       </div>

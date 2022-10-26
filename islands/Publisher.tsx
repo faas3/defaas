@@ -23,13 +23,13 @@ async function addToChain(ethereum: any, func: FuncMeta) {
   return txn;
 }
 
-export default function MLoader() {
+export default function Publisher() {
   const [gist, setGist] = useState("");
 
   const { ethereum } = window;
 
   return (
-    <div class="rounded-2xl w-5/6 md:w-5/12 max-w-xl pt-4 pb-8 px-7">
+    <div class="w-11/12 max-w-4xl mx-auto mt-8  lg:gap-x-16">
       <form
         onSubmit={async (e) => {
           e.preventDefault();
@@ -61,9 +61,9 @@ export default function MLoader() {
             txn_hash: txn.hash,
             owner_addr: txn.from,
             token_id: 1,
-          }
+          };
 
-          await addToPg(func)
+          await addToPg(func);
 
           alert(JSON.stringify(txn));
         }}
@@ -85,10 +85,10 @@ export default function MLoader() {
           />
         </label>
         <button
-          class="mt-7 flex flex items-center rounded-md h-8 py-2 px-4 bg-gray-800 font-medium text-sm text-white"
+          class="mt-6 inline-flex items-center rounded border border-red-800 px-8 py-3 text-red-800 hover:bg-red-800 hover:text-white focus:outline-none focus:ring active:bg-red-700"
           type="submit"
         >
-          publish
+          Publish it to blockchain
         </button>
       </form>
     </div>

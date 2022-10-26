@@ -5,27 +5,31 @@
 import config from "./deno.json" assert { type: "json" };
 import * as $0 from "./routes/[name].tsx";
 import * as $1 from "./routes/_404.tsx";
-import * as $2 from "./routes/docs/[...slug].tsx";
-import * as $3 from "./routes/functions.tsx";
-import * as $4 from "./routes/functions/[name].tsx";
-import * as $5 from "./routes/gfm.css.ts";
-import * as $6 from "./routes/index.tsx";
-import * as $7 from "./routes/upload.tsx";
-import * as $$0 from "./islands/Loader.tsx";
+import * as $2 from "./routes/api/runner.ts";
+import * as $3 from "./routes/docs/[...slug].tsx";
+import * as $4 from "./routes/functions.tsx";
+import * as $5 from "./routes/functions/[name].tsx";
+import * as $6 from "./routes/gfm.css.ts";
+import * as $7 from "./routes/index.tsx";
+import * as $8 from "./routes/upload.tsx";
+import * as $$0 from "./islands/Publisher.tsx";
+import * as $$1 from "./islands/Runner.tsx";
 
 const manifest = {
   routes: {
     "./routes/[name].tsx": $0,
     "./routes/_404.tsx": $1,
-    "./routes/docs/[...slug].tsx": $2,
-    "./routes/functions.tsx": $3,
-    "./routes/functions/[name].tsx": $4,
-    "./routes/gfm.css.ts": $5,
-    "./routes/index.tsx": $6,
-    "./routes/upload.tsx": $7,
+    "./routes/api/runner.ts": $2,
+    "./routes/docs/[...slug].tsx": $3,
+    "./routes/functions.tsx": $4,
+    "./routes/functions/[name].tsx": $5,
+    "./routes/gfm.css.ts": $6,
+    "./routes/index.tsx": $7,
+    "./routes/upload.tsx": $8,
   },
   islands: {
-    "./islands/Loader.tsx": $$0,
+    "./islands/Publisher.tsx": $$0,
+    "./islands/Runner.tsx": $$1,
   },
   baseUrl: import.meta.url,
   config,

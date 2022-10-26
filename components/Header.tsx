@@ -43,7 +43,6 @@ const menuItems = [
     url: "/docs",
   },
 
-
   {
     title: "GitHub",
     url: "https://github.com/zhenfeng-zhu/deno_mircro_faas",

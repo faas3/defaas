@@ -44,24 +44,48 @@ export function FunctionDetail(props: Data) {
 
   return funcs.map((item: FuncMeta, index: number) => {
     return (
-      <div class="mt-10 md:mt-20 grid md:grid-cols-2 gap-2 md:gap-0">
-        <div>
-          <h2 class="pb-5 text-2xl md:text-4xl font-black">
-            {index + 1}. {item.func_name}
-          </h2>
-          <p class="md:mx-10 text-l md:text-xl text-gray-500">
-            {item.desc} <br />
-          </p>
-          <a class="md:mx-10 block bg-red-800 rounded-r-lg text-white p-4 md:p-6" href={`https://mumbai.polygonscan.com/tx/${item.txn_hash}`}>
-            verify it on chain
-          </a>
-          <p class="md:mx-10 text-l md:text-xl text-gray-500">
-            {item.created_at}
-          </p>
-        </div>
-        <div class="pb-4">
-          <Markdown markdown={"\n\n" + item.content + "\n\n"} />
-        </div>
+      <div class="w-11/12 max-w-4xl mx-auto mt-8  lg:gap-x-16">
+        <section
+          aria-labelledby="information-heading"
+          class="mt-12 pt-6 border-t-1 border-gray-200"
+        >
+          <div class="w-full flex items-center justify-between gap-4">
+            <hgroup>
+              <a
+                href={`/functions/${item.func_name}`}
+                class="relative text-3xl font-bold text-grey-800"
+              >
+                {item.func_name}
+              </a>
+
+              <h3 class="mt-10 text-gray-500 text-base leading-tight">
+                {item.desc}
+              </h3>
+
+              <a
+                class="mt-6 inline-flex items-center rounded border border-red-800 px-8 py-3 text-red-800 hover:bg-red-800 hover:text-white focus:outline-none focus:ring active:bg-red-700"
+                href={`https://mumbai.polygonscan.com/tx/${item.txn_hash}`}
+              >
+                <span class="text-sm font-medium">Verify it on blockchain</span>
+
+                <svg
+                  class="ml-3 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </a>
+            </hgroup>
+          </div>
+        </section>
       </div>
     );
   });
