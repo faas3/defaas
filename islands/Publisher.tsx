@@ -53,8 +53,6 @@ export default function Publisher() {
           };
 
           const txn = await addToChain(ethereum, metadata);
-          console.log("===============>");
-          console.log(txn);
 
           const func: FuncMeta = {
             ...metadata,

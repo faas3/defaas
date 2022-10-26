@@ -17,7 +17,6 @@ export const handler: Handlers<Data> = {
   async GET(_req, ctx) {
     const name = ctx.params.name;
     const func = await db.getByFuncName(name);
-    console.log(func);
     return ctx.render({ func: func[0] });
   },
 };

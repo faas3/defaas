@@ -13,7 +13,6 @@ const db = new Database();
 
 export default function Functions(ctx: PageProps<Data>) {
   const { data } = ctx;
-  console.log(data);
 
   return (
     <App activeLink="/functions">
@@ -34,7 +33,6 @@ interface Data {
 export const handler: Handlers<Data> = {
   async GET(_req, ctx) {
     const result = await db.getAll();
-    console.log(result);
     return ctx.render({ funcs: result as Array<FuncMeta> });
   },
 };

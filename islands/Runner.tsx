@@ -13,9 +13,6 @@ interface RunnerProps {
 }
 
 export default function Runner(props: RunnerProps) {
-  console.log("runner");
-  console.log(props);
-
   const [param, setParam] = useState("");
 
   return (
@@ -23,9 +20,7 @@ export default function Runner(props: RunnerProps) {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          console.log(param);
           const params = param.split(",").map((item) => item.trim());
-          console.log(params);
 
           const result = await axiod.post("/api/runner", {
             params,
