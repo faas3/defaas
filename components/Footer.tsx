@@ -4,7 +4,7 @@ export function Footer() {
       <footer class="container mx-auto p-4">
         <p class="text-center">
           <a
-            href="https://github.com/zhenfeng-zhu/deno_mircro_faas"
+            href="https://github.com/faas3/faas3"
             class="m-2 inline-block"
           >
             GitHub
