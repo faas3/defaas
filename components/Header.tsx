@@ -32,7 +32,7 @@ const menuItems = [
   },
   {
     title: "Functions",
-    url: "functions",
+    url: "/functions",
   },
   {
     title: "Upload",

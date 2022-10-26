@@ -25,14 +25,20 @@ export class Database {
     return onchain_functions;
   }
 
-  async getByTokenId() {
+  async getById(id: number) {
     const { data, error } = await this.#client.from("onchain_functions").select(
       "*",
-    ).eq("token_id", 1);
+    ).eq("id", id);
 
-    console.log("get by token id = 1");
-    console.log(error);
-    console.log(data);
+    return data
+  }
+
+  async getByFuncName(name: string) {
+    const { data, error } = await this.#client.from("onchain_functions").select(
+      "*",
+    ).eq("func_name", name);
+
+    return data
   }
 
   async insert(data: Array<Func>) {
