@@ -1,4 +1,4 @@
-import { ethers } from "https://cdn.skypack.dev/ethers";
+import { ethers } from "ethers";
 
 const infuraID =
   "https://polygon-mumbai.infura.io/v3/4e9d670bd94f4639959397c3cc2fb246";

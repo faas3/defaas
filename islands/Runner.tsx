@@ -1,12 +1,6 @@
 import { useState } from "preact/hooks";
-import { Markdown } from "../components/Markdown.tsx";
-import { Head } from "$fresh/runtime.ts";
-import * as gfm from "https://deno.land/x/gfm@0.1.23/mod.ts";
 import axiod from "https://deno.land/x/axiod/mod.ts";
-import { Database } from "../commuction/database.ts";
 import { FuncMeta } from "../utils/types.ts";
-import { ethers, providers } from "https://cdn.skypack.dev/ethers";
-import { contract, yourContract } from "../commuction/contract.ts";
 
 interface RunnerProps {
   func: FuncMeta;

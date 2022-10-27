@@ -1,10 +1,10 @@
 import { HandlerContext } from "$fresh/server.ts";
-import axiod from "https://deno.land/x/axiod/mod.ts";
-
 import { importString } from "https://deno.land/x/import/mod.ts";
 import { Database } from "../../commuction/database.ts";
 
 const db = new Database();
+
+const funcCache = {};
 
 export const handler = async (
   _req: Request,
@@ -16,8 +16,23 @@ export const handler = async (
 
   const payload = await _req.json();
   let { func_name, params } = payload;
-  const funcMeta = await db.getByFuncName(func_name);
-  const mod = await importString(`${funcMeta[0].content}`);
+  const mod = await loadFromCache(func_name);
   const data = await mod.handler(...params);
   return Response.json({ data });
 };
+
+async function loadFromCache(func_name: string) {
+  if (funcCache[func_name]) {
+    console.log("cache...");
+    return funcCache[func_name];
+  }
+
+  console.log("from db...");
+  // load from db
+  const funcMeta = await db.getByFuncName(func_name);
+  const content = funcMeta[0].content;
+  // const code = await bun(content);
+  const mod = await importString(content);
+  funcCache[func_name] = mod;
+  return mod;
+}

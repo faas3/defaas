@@ -1,15 +1,9 @@
 import { Head } from "$fresh/runtime.ts";
-import { Handlers, PageProps } from "$fresh/server.ts";
 import { App } from "../components/App.tsx";
 import { Jumbo } from "../components/Jumbo.tsx";
 import { IconArrowRight } from "../components/Icons.tsx";
-import { gfm } from "../utils/markdown.ts";
-import axiod from "https://deno.land/x/axiod/mod.ts";
-import { Markdown } from "../components/Markdown.tsx";
 
-export default function Home(ctx: PageProps<Data>) {
-  const { data } = ctx;
-
+export default function Home() {
   return (
     <App activeLink="/">
       <Head>
