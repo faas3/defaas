@@ -90,7 +90,7 @@ function Steps() {
         </h2>
         <p class="md:mx-10 text-l md:text-xl">
           Gist is an easy method to share snippets or excerpts of data with
-          others.A gist can be either public or secret. 
+          others.A gist can be either public or secret.
         </p>
       </div>
       <div class="pb-4">
