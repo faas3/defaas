@@ -1,5 +1,5 @@
 import { useState } from "preact/hooks";
-import axiod from "https://deno.land/x/axiod/mod.ts";
+import axiod from "axiod";
 import { FuncMeta } from "../utils/types.ts";
 
 interface RunnerProps {

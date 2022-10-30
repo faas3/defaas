@@ -1,5 +1,5 @@
 import { useState } from "preact/hooks";
-import axiod from "https://deno.land/x/axiod/mod.ts";
+import axiod from "axiod";
 import { Database } from "../commuction/database.ts";
 import { FuncMeta } from "../utils/types.ts";
 import { providers } from "ethers";
@@ -10,6 +10,7 @@ async function addToPg(func: FuncMeta) {
   await db.insert([func]);
 }
 
+// deno-lint-ignore no-explicit-any
 async function addToChain(ethereum: any, func: FuncMeta) {
   const provider = new providers.Web3Provider(ethereum);
   await provider.send("eth_requestAccounts", []);

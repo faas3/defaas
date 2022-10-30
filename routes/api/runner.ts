@@ -15,7 +15,7 @@ export const handler = async (
   }
 
   const payload = await _req.json();
-  let { func_name, params } = payload;
+  const { func_name, params } = payload;
   const mod = await loadFromCache(func_name);
   const data = await mod.handler(...params);
   return Response.json({ data });
