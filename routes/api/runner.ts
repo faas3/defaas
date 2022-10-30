@@ -23,11 +23,9 @@ export const handler = async (
 
 async function loadFromCache(func_name: string) {
   if (funcCache[func_name]) {
-    console.log("cache...");
     return funcCache[func_name];
   }
 
-  console.log("from db...");
   // load from db
   const funcMeta = await db.getByFuncName(func_name);
   const content = funcMeta[0].content;

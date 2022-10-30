@@ -21,7 +21,7 @@ export class Database {
       "onchain_functions",
     ).select(
       "*",
-    );
+    ).order("id", { ascending: false });
     return onchain_functions;
   }
 
