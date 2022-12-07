@@ -2,7 +2,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { Jumbo } from "../../components/Jumbo.tsx";
 import { App } from "../../components/App.tsx";
 import { FuncMeta } from "../../utils/types.ts";
-import { Database } from "../../commuction/database.ts";
+import { Database } from "../../utils/database.ts";
 import { Markdown } from "../../components/Markdown.tsx";
 import { Head } from "$fresh/runtime.ts";
 import Runner from "../../islands/Runner.tsx";

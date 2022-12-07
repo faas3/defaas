@@ -1,9 +1,9 @@
 import { useState } from "preact/hooks";
 import axiod from "axiod";
-import { Database } from "../commuction/database.ts";
+import { Database } from "../utils/database.ts";
 import { FuncMeta } from "../utils/types.ts";
 import { providers } from "ethers";
-import { contract, yourContract } from "../commuction/contract.ts";
+import { contract, yourContract } from "../utils/contract.ts";
 
 const db = new Database();
 async function addToPg(func: FuncMeta) {
