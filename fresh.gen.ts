@@ -8,13 +8,15 @@ import * as $1 from "./routes/_404.tsx";
 import * as $2 from "./routes/api/runner.ts";
 import * as $3 from "./routes/api/runtime/[...name].ts";
 import * as $4 from "./routes/docs/[...slug].tsx";
-import * as $5 from "./routes/functions.tsx";
-import * as $6 from "./routes/functions/[name].tsx";
-import * as $7 from "./routes/gfm.css.ts";
-import * as $8 from "./routes/index.tsx";
-import * as $9 from "./routes/upload.tsx";
-import * as $$0 from "./islands/Publisher.tsx";
-import * as $$1 from "./islands/Runner.tsx";
+import * as $5 from "./routes/editor.tsx";
+import * as $6 from "./routes/functions.tsx";
+import * as $7 from "./routes/functions/[name].tsx";
+import * as $8 from "./routes/gfm.css.ts";
+import * as $9 from "./routes/index.tsx";
+import * as $10 from "./routes/upload.tsx";
+import * as $$0 from "./islands/Editor.tsx";
+import * as $$1 from "./islands/Publisher.tsx";
+import * as $$2 from "./islands/Runner.tsx";
 
 const manifest = {
   routes: {
@@ -23,15 +25,17 @@ const manifest = {
     "./routes/api/runner.ts": $2,
     "./routes/api/runtime/[...name].ts": $3,
     "./routes/docs/[...slug].tsx": $4,
-    "./routes/functions.tsx": $5,
-    "./routes/functions/[name].tsx": $6,
-    "./routes/gfm.css.ts": $7,
-    "./routes/index.tsx": $8,
-    "./routes/upload.tsx": $9,
+    "./routes/editor.tsx": $5,
+    "./routes/functions.tsx": $6,
+    "./routes/functions/[name].tsx": $7,
+    "./routes/gfm.css.ts": $8,
+    "./routes/index.tsx": $9,
+    "./routes/upload.tsx": $10,
   },
   islands: {
-    "./islands/Publisher.tsx": $$0,
-    "./islands/Runner.tsx": $$1,
+    "./islands/Editor.tsx": $$0,
+    "./islands/Publisher.tsx": $$1,
+    "./islands/Runner.tsx": $$2,
   },
   baseUrl: import.meta.url,
   config,

@@ -39,6 +39,10 @@ const menuItems = [
     url: "/upload",
   },
   {
+    title: "Editor",
+    url: "/editor",
+  },
+  {
     title: "Documentation",
     url: "/docs",
   },
