@@ -43,9 +43,17 @@ export class Database {
     await this.#client.from("onchain_functions").insert([...data]);
   }
 
-  async insert_move(data: Array<MoveFunc>){
+  async insert_move(data: Array<MoveFunc>) {
     const res = await this.#client.from("move_functions").insert(data);
-    console.log(res)
-    return res
+    console.log(res);
+    return res;
+  }
+
+  async find_by_name(name: string): Promise<MoveFunc[] | null> {
+    const { data } = await this.#client
+      .from("move_functions")
+      .select("*")
+      .eq("name", name);
+    return data;
   }
 }
