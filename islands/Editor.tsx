@@ -80,13 +80,12 @@ export function handler(req) {
             token_id: 1,
           };
 
-
           const func: FuncMeta = {
             ...metadata,
           };
 
           await addToPg(func);
-          alert(JSON.stringify(func))
+          alert(JSON.stringify(func));
         }}
       >
         <label>
