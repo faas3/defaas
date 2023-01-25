@@ -1,5 +1,5 @@
 import { HandlerContext } from "$fresh/server.ts";
-import { importString } from "https://deno.land/x/import/mod.ts";
+import { importString } from "https://deno.land/x/import@v0.1.6/mod.ts";
 import { Database } from "../../utils/database.ts";
 
 const db = new Database();
