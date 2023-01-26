@@ -17,7 +17,12 @@ export default function Home() {
           <br />
           for <span class="text-red-800">Web3</span> developers
         </p>
+
         <div class="flex flex-row">
+          <img src="code.jpeg" />
+        </div>
+
+        <div class="m-8 flex flex-row">
           <pre class="py-4 md:py-6 px-6 bg-gray-800 text-white rounded-l-lg">
             Try it!
           </pre>
@@ -29,16 +34,16 @@ export default function Home() {
           </a>
         </div>
 
-        <Steps />
+        {/* <Steps /> */}
 
-        <p class="text-center pt-4 md:pt-8 pb-5 md:pb-10">
+        {/* <p class="text-center pt-4 md:pt-8 pb-5 md:pb-10">
           <a
             href="/docs"
             class="text-l md:text-xl flex flex-row gap-4 bg-red-800 rounded text-white p-4 md:p-6"
           >
             <span>Read the documentation</span> <IconArrowRight />
           </a>
-        </p>
+        </p> */}
       </div>
       <Features />
     </App>
@@ -128,7 +133,7 @@ function Steps() {
 
 function Features() {
   return (
-    <div class="grid md:grid-cols-4 gap-4 pb-20">
+    <div class="m-10 grid md:grid-cols-4 gap-4 pb-20">
       <div class="p-2">
         <h2 class="text-xl font-black">Next-gen serverless</h2>
         {/* <p>Query RDF data from any source effortlessly.</p> */}

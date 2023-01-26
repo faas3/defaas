@@ -30,18 +30,18 @@ const menuItems = [
     title: "Home",
     url: "/",
   },
-  {
-    title: "Functions",
-    url: "/functions",
-  },
-  {
-    title: "Upload",
-    url: "/upload",
-  },
-  {
-    title: "Editor",
-    url: "/editor",
-  },
+  // {
+  //   title: "Functions",
+  //   url: "/functions",
+  // },
+  // {
+  //   title: "Upload",
+  //   url: "/upload",
+  // },
+  // {
+  //   title: "Editor",
+  //   url: "/editor",
+  // },
   {
     title: "Documentation",
     url: "/docs",
