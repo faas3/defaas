@@ -6,7 +6,7 @@ const db = new Database();
 
 export const handler = async (
   _req: Request,
-  _ctx: HandlerContext
+  _ctx: HandlerContext,
 ): Promise<Response> => {
   if (_req.method != "POST") {
     return Response.json({ error: "only support post" });

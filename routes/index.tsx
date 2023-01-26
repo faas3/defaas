@@ -36,14 +36,16 @@ export default function Home() {
 
         {/* <Steps /> */}
 
-        {/* <p class="text-center pt-4 md:pt-8 pb-5 md:pb-10">
+        {
+          /* <p class="text-center pt-4 md:pt-8 pb-5 md:pb-10">
           <a
             href="/docs"
             class="text-l md:text-xl flex flex-row gap-4 bg-red-800 rounded text-white p-4 md:p-6"
           >
             <span>Read the documentation</span> <IconArrowRight />
           </a>
-        </p> */}
+        </p> */
+        }
       </div>
       <Features />
     </App>
