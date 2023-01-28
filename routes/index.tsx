@@ -27,7 +27,7 @@ export default function Home() {
             Try it!
           </pre>
           <a
-            href="/functions/sum.ts"
+            href="https://github.com/faas3/faas3-cli"
             class="block bg-red-800 rounded-r-lg text-white p-4 md:p-6"
           >
             <IconArrowRight />
