@@ -1,4 +1,4 @@
-import { IconExternalLink, IconLDkit } from "./Icons.tsx";
+import { IconExternalLink, IconLDkit } from "./Icons.tsx"
 
 export function Header(props: { activeLink: ActiveLink }) {
   return (
@@ -8,7 +8,7 @@ export function Header(props: { activeLink: ActiveLink }) {
         <Menu {...props} />
       </header>
     </div>
-  );
+  )
 }
 
 function Logo() {
@@ -22,7 +22,7 @@ function Logo() {
         <span class="pb-1 pl-2">FaaS3</span>
       </a>
     </h1>
-  );
+  )
 }
 
 const menuItems = [
@@ -51,33 +51,33 @@ const menuItems = [
     title: "GitHub",
     url: "https://github.com/faas3/faas3",
   },
-] as const;
+] as const
 
-type Writeable<T> = { -readonly [P in keyof T]: T[P] };
-type Unpacked<T> = T extends (infer U)[] ? U : T;
-export type ActiveLink = Unpacked<Writeable<typeof menuItems>>["url"];
+type Writeable<T> = { -readonly [P in keyof T]: T[P] }
+type Unpacked<T> = T extends (infer U)[] ? U : T
+export type ActiveLink = Unpacked<Writeable<typeof menuItems>>["url"]
 
 function Menu(props: { activeLink: ActiveLink }) {
   return (
     <ul class="flex-0-1-auto flex overflow-x-auto">
       {menuItems.map((item) => MenuItem({ ...item, ...props }))}
     </ul>
-  );
+  )
 }
 
 type MenuItemProps = {
-  title: string;
-  url: string;
-  activeLink: ActiveLink;
-};
+  title: string
+  url: string
+  activeLink: ActiveLink
+}
 
 const baseLinkClass =
-  "flex flex-row p-4 border-b-2 hover:border-black dark:hover:border-red-700 dark:hover:text-white";
+  "flex flex-row p-4 border-b-2 hover:border-black dark:hover:border-red-700 dark:hover:text-white"
 
 function MenuItem({ title, url, activeLink }: MenuItemProps) {
   const linkClass = url === activeLink
     ? `${baseLinkClass} border-black dark:border-red-700 bg-gray-50 dark:bg-gray-800`
-    : `${baseLinkClass} border-transparent`;
+    : `${baseLinkClass} border-transparent`
   return (
     <li>
       <a href={url} class={linkClass}>
@@ -91,5 +91,5 @@ function MenuItem({ title, url, activeLink }: MenuItemProps) {
           : null}
       </a>
     </li>
-  );
+  )
 }

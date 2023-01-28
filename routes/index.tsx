@@ -1,8 +1,8 @@
-import { Head } from "$fresh/runtime.ts";
-import { App } from "../components/App.tsx";
-import { Jumbo } from "../components/Jumbo.tsx";
-import { IconArrowRight } from "../components/Icons.tsx";
-import { Markdown } from "../components/Markdown.tsx";
+import { Head } from "$fresh/runtime.ts"
+import { App } from "../components/App.tsx"
+import { Jumbo } from "../components/Jumbo.tsx"
+import { IconArrowRight } from "../components/Icons.tsx"
+import { Markdown } from "../components/Markdown.tsx"
 
 export default function Home() {
   return (
@@ -49,7 +49,7 @@ export default function Home() {
       </div>
       <Features />
     </App>
-  );
+  )
 }
 
 const helpMarkdown = `
@@ -68,7 +68,7 @@ Commands:
 Options:
   -h, --help     Print help
   -V, --version  Print version
-`;
+`
 
 const step1Markdown = `
 import { type Context, setDefaultContext } from "ldkit";
@@ -78,7 +78,7 @@ const context: Context = {
 };
 
 setDefaultContext(context);
-`;
+`
 
 const step2Markdown = `
 import { dbo, rdfs, xsd } from "ldkit/namespaces";
@@ -92,7 +92,7 @@ const PersonSchema = {
     "@type": xsd.date,
   },
 } as const;
-`;
+`
 
 const step3Markdown = `
 import { createLens } from "ldkit";
@@ -104,7 +104,7 @@ const ada = await Persons.findByIri(adaIri);
 
 console.log(ada.name); // Ada Lovelace
 console.log(ada.birthDate); // Date object of 1815-12-10
-`;
+`
 
 function Steps() {
   return (
@@ -148,7 +148,7 @@ function Steps() {
         <Markdown markdown={step3Markdown} />
       </div>
     </div>
-  );
+  )
 }
 
 function Features() {
@@ -171,5 +171,5 @@ function Features() {
         {/* <p>Compatible or built upon all the popular RDF/JS libraries</p> */}
       </div>
     </div>
-  );
+  )
 }

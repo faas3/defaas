@@ -1,4 +1,4 @@
-import { Options } from "$fresh/plugins/twind.ts";
+import { Options } from "$fresh/plugins/twind.ts"
 
 export default {
   selfURL: import.meta.url,
@@ -11,4 +11,4 @@ export default {
       // "2xl": "1536px",
     },
   },
-} as Options;
+} as Options

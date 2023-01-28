@@ -15,13 +15,13 @@ A Lens requires a [Schema](./schema), a [Context](./context), and a
 ones will be used.
 
 ```ts
-import { type Context, createLens } from "ldkit";
+import { type Context, createLens } from "ldkit"
 
 const context: Context = {
   sources: ["https://example.com/sparql"],
-};
+}
 
-const MyLens = createLens(MySchema, context); // will use default query engine
+const MyLens = createLens(MySchema, context) // will use default query engine
 ```
 
 ## Lens usage
@@ -32,12 +32,12 @@ of entities of type _dbo:Person_ that have a name, an abstract and a birth date.
 ### Create a Lens instance to query persons
 
 ```ts
-import { type Context, createLens } from "ldkit";
-import { dbo, rdfs, xsd } from "ldkit/namespaces";
+import { type Context, createLens } from "ldkit"
+import { dbo, rdfs, xsd } from "ldkit/namespaces"
 
 const context: Context = {
   sources: ["https://example.com/sparql"],
-};
+}
 
 // Create a schema
 const PersonSchema = {
@@ -45,34 +45,34 @@ const PersonSchema = {
   name: rdfs.label,
   abstract: dbo.abstract,
   birthDate: { "@id": dbo.birthDate, "@type": xsd.date },
-} as const;
+} as const
 
 // Create a resource using the data schema and context above
-const Persons = createLens(PersonSchema, context);
+const Persons = createLens(PersonSchema, context)
 ```
 
 ### List all matched persons
 
 ```ts
 // List all persons
-const persons = await Persons.find();
+const persons = await Persons.find()
 for (const person of persons) {
-  console.log(person.name); // string
-  console.log(person.birthDate); // Date
+  console.log(person.name) // string
+  console.log(person.birthDate) // Date
 }
 
 // Get total count of all persons
-const count = await Persons.count();
-console.log(count); // number
+const count = await Persons.count()
+console.log(count) // number
 ```
 
 ### Get a particular entity
 
 ```ts
 // Get a particular person identified by IRI
-const ada = await Persons.findByIri("http://dbpedia.org/resource/Ada_Lovelace");
-console.log(ada?.name); // string "Ada Lovelace"
-console.log(ada?.birthDate); // Date object of 1815-12-10
+const ada = await Persons.findByIri("http://dbpedia.org/resource/Ada_Lovelace")
+console.log(ada?.name) // string "Ada Lovelace"
+console.log(ada?.birthDate) // Date object of 1815-12-10
 ```
 
 ### Data manipulation - insert, update and delete
@@ -86,16 +86,16 @@ Persons.insert({
   $id: "http://dbpedia.org/resource/Alan_Turing",
   name: "Alan Turing",
   birthDate: new Date("1912-06-23"),
-});
+})
 
 // Modify a person's name
 Persons.update({
   $id: "http://dbpedia.org/resource/Alan_Turing",
   name: "Not Alan Turing",
-});
+})
 
 // Delete a person
-Persons.delete("http://dbpedia.org/resource/Alan_Turing");
+Persons.delete("http://dbpedia.org/resource/Alan_Turing")
 ```
 
 ### Data manipulation - insert or update raw data

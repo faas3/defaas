@@ -29,5 +29,5 @@ export function Footer() {
         </p>
       </footer>
     </div>
-  );
+  )
 }

@@ -7,11 +7,11 @@ The only mandatory property of the context is to specify a RDF datasource. The
 minimum example of such context is the following:
 
 ```ts
-import { type Context } from "ldkit";
+import { type Context } from "ldkit"
 
 const context: Context = {
   sources: ["https://example.com/sparql"],
-};
+}
 ```
 
 The Context structure accepted by LDkit is derived from the
@@ -38,20 +38,20 @@ there is a default context, then the `Lens` will use that context, if you do not
 provide one directly.
 
 ```ts
-import { type Context, createLens, setDefaultContext } from "ldkit";
+import { type Context, createLens, setDefaultContext } from "ldkit"
 
 const context: Context = {
   sources: ["https://example.com/sparql"],
   language: "en",
-};
+}
 
-setDefaultContext(context);
+setDefaultContext(context)
 
 const customContext: Context = {
   ...context,
   language: "cs",
-};
+}
 
-const firstResource = createLens(FirstSchema); // will use the default context
-const secondResource = createLens(SecondSchema, customContext); // will use custom context
+const firstResource = createLens(FirstSchema) // will use the default context
+const secondResource = createLens(SecondSchema, customContext) // will use custom context
 ```

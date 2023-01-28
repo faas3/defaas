@@ -1,7 +1,7 @@
-import { UnknownPageProps } from "$fresh/server.ts";
+import { UnknownPageProps } from "$fresh/server.ts"
 
-import { App } from "../components/App.tsx";
-import { Jumbo } from "../components/Jumbo.tsx";
+import { App } from "../components/App.tsx"
+import { Jumbo } from "../components/Jumbo.tsx"
 
 export default function NotFoundPage({ url }: UnknownPageProps) {
   return (
@@ -13,5 +13,5 @@ export default function NotFoundPage({ url }: UnknownPageProps) {
         Hopefully we will find it soon.
       </p>
     </App>
-  );
+  )
 }

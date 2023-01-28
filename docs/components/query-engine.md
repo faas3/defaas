@@ -11,9 +11,9 @@ implement your own.
 ## Default query engine
 
 ```ts
-import { QueryEngine } from "ldkit";
+import { QueryEngine } from "ldkit"
 
-const engine = new QueryEngine();
+const engine = new QueryEngine()
 ```
 
 The `QueryEngine` follows
@@ -23,15 +23,15 @@ The `QueryEngine` follows
 The `QueryEngine` is configurable through [context](./context).
 
 ```ts
-import { type Context, QueryEngine } from "ldkit";
+import { type Context, QueryEngine } from "ldkit"
 
 const context: Context = {
   sources: ["https://example.com/sparql"], // required, must include one SPARQL endpoint
   fetch: customFetchFunction, // optional, must follow standard fetch interface
-};
-const engine = new QueryEngine();
+}
+const engine = new QueryEngine()
 
-const response = await engine.queryBoolean("ASK { ?s ?p ?o }", context);
+const response = await engine.queryBoolean("ASK { ?s ?p ?o }", context)
 ```
 
 > Note: The default query engine supports all SPARQL endpoints that conform to
@@ -59,10 +59,10 @@ instance, then the `Lens` will use that engine, if you do not provide one
 directly.
 
 ```ts
-import { createLens, setDefaultEngine } from "ldkit";
+import { createLens, setDefaultEngine } from "ldkit"
 
-const engine = new MyCustomQueryEngine();
-setDefaultEngine(engine);
+const engine = new MyCustomQueryEngine()
+setDefaultEngine(engine)
 
-const MyLens = createLens(MySchema); // will use the custom engine, which is now default
+const MyLens = createLens(MySchema) // will use the custom engine, which is now default
 ```
