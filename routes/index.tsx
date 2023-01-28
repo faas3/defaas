@@ -18,8 +18,8 @@ export default function Home() {
           for <span class="text-red-800">Web3</span> developers
         </p>
 
-        <div class="flex flex-row">
-          <img src="code.jpeg" />
+        <div>
+          <Markdown markdown={helpMarkdown} />
         </div>
 
         <div class="m-8 flex flex-row">
@@ -51,6 +51,24 @@ export default function Home() {
     </App>
   );
 }
+
+const helpMarkdown = `
+$ faas3 --help
+Usage: faas3 [COMMAND]
+
+Commands:
+  create  create the function
+  deploy  deploy the function to runtime and blockchain
+  run     local run
+  call    remote call the function
+  list    list the functions
+  verify  verify the runtime function, which should equal to the on-chain code
+  help    Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+`;
 
 const step1Markdown = `
 import { type Context, setDefaultContext } from "ldkit";
