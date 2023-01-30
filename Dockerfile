@@ -7,4 +7,4 @@ USER deno
 # These steps will be re-run upon each file change in your working directory:
 ADD . .
 
-CMD deno task start
+CMD deno run --unstable -A main.ts
