@@ -8,4 +8,5 @@ export interface MoveFunc {
   owner?: string
   created_at?: string
   object_id?: string
+  template?: string
 }

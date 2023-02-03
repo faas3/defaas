@@ -8,10 +8,11 @@ import * as $1 from "./routes/_404.tsx"
 import * as $2 from "./routes/api/deploy.ts"
 import * as $3 from "./routes/api/functions/[name].ts"
 import * as $4 from "./routes/api/moverun.ts"
-import * as $5 from "./routes/docs/[...slug].tsx"
-import * as $6 from "./routes/gfm.css.ts"
-import * as $7 from "./routes/index.tsx"
-import * as $8 from "./routes/move.tsx"
+import * as $5 from "./routes/api/runner/[name].ts"
+import * as $6 from "./routes/docs/[...slug].tsx"
+import * as $7 from "./routes/gfm.css.ts"
+import * as $8 from "./routes/index.tsx"
+import * as $9 from "./routes/move.tsx"
 import * as $$0 from "./islands/MoveFuncs.tsx"
 
 const manifest = {
@@ -21,10 +22,11 @@ const manifest = {
     "./routes/api/deploy.ts": $2,
     "./routes/api/functions/[name].ts": $3,
     "./routes/api/moverun.ts": $4,
-    "./routes/docs/[...slug].tsx": $5,
-    "./routes/gfm.css.ts": $6,
-    "./routes/index.tsx": $7,
-    "./routes/move.tsx": $8,
+    "./routes/api/runner/[name].ts": $5,
+    "./routes/docs/[...slug].tsx": $6,
+    "./routes/gfm.css.ts": $7,
+    "./routes/index.tsx": $8,
+    "./routes/move.tsx": $9,
   },
   islands: {
     "./islands/MoveFuncs.tsx": $$0,
