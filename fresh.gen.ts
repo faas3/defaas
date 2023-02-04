@@ -6,8 +6,8 @@ import config from "./deno.json" assert { type: "json" };
 import * as $0 from "./routes/[name].tsx";
 import * as $1 from "./routes/_404.tsx";
 import * as $2 from "./routes/api/deploy.ts";
-import * as $3 from "./routes/api/functions/[name].ts";
-import * as $4 from "./routes/api/moverun.ts";
+import * as $3 from "./routes/api/functions.ts";
+import * as $4 from "./routes/api/functions/[name].ts";
 import * as $5 from "./routes/api/runner/[name].ts";
 import * as $6 from "./routes/docs/[...slug].tsx";
 import * as $7 from "./routes/gfm.css.ts";
@@ -20,8 +20,8 @@ const manifest = {
     "./routes/[name].tsx": $0,
     "./routes/_404.tsx": $1,
     "./routes/api/deploy.ts": $2,
-    "./routes/api/functions/[name].ts": $3,
-    "./routes/api/moverun.ts": $4,
+    "./routes/api/functions.ts": $3,
+    "./routes/api/functions/[name].ts": $4,
     "./routes/api/runner/[name].ts": $5,
     "./routes/docs/[...slug].tsx": $6,
     "./routes/gfm.css.ts": $7,

@@ -25,6 +25,13 @@ class Database {
       .eq("name", name);
     return data ?? [];
   }
+
+  async findAll(): Promise<MoveFunc[]> {
+    const { data } = await this.#client
+      .from("move_functions")
+      .select("*");
+    return data ?? [];
+  }
 }
 
 export const db = new Database();

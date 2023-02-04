@@ -1,5 +1,5 @@
 import { HandlerContext } from "$fresh/server.ts";
-import { db } from "../../../utils/database.ts";
+import { db } from "../../utils/database.ts";
 
 export const handler = async (
   _req: Request,
@@ -9,8 +9,6 @@ export const handler = async (
     return Response.json({ error: "only support get" });
   }
 
-  const { name } = _ctx.params;
-  const funcs = await db.findByName(name);
-
-  return Response.json(funcs[0]);
+  const result = await db.findAll();
+  return Response.json(result);
 };
