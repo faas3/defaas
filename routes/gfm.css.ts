@@ -1,5 +1,5 @@
-import { Handlers } from "$fresh/server.ts"
-import { gfm } from "../utils/markdown.ts"
+import { Handlers } from "$fresh/server.ts";
+import { gfm } from "../utils/markdown.ts";
 
 const CSS = `${gfm.CSS}
 ol.nested {
@@ -32,7 +32,7 @@ ol.nested li:before {
   font-weight:800;
   letter-spacing: -0.025em;
 }
-`
+`;
 
 export const handler: Handlers = {
   GET: () => {
@@ -41,6 +41,6 @@ export const handler: Handlers = {
         "content-type": "text/css",
         "cache-control": "public, max-age=31536000, immutable",
       },
-    })
+    });
   },
-}
+};

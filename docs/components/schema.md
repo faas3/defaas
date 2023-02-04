@@ -16,7 +16,7 @@ and birt date.
 
 ```ts
 // `schema` is `https://schema.org/` namespace
-import { schema } from "ldkit/namespaces"
+import { schema } from "ldkit/namespaces";
 
 const PersonSchema = {
   "@type": schema.Person, // setting `@type` is required
@@ -25,7 +25,7 @@ const PersonSchema = {
     "@id": schema.birthDate,
     "@type": xsd.date,
   },
-} as const // this is important for proper type hints
+} as const; // this is important for proper type hints
 ```
 
 The schema translates to the following:
@@ -41,11 +41,11 @@ following type:
 
 ```ts
 type PersonType = {
-  $id: string // IRI
-  $type: string[] // defined in `@type`
-  name: string
-  birthDate: Date
-}
+  $id: string; // IRI
+  $type: string[]; // defined in `@type`
+  name: string;
+  birthDate: Date;
+};
 ```
 
 ## Schema features
@@ -66,14 +66,14 @@ Each schema must have at least one entity type defined.
 ```ts
 const MySchema = {
   "@type": "http://example.com/ontology/MyClass",
-} as const
+} as const;
 
 const MyOtherSchema = {
   "@type": [
     "http://example.com/ontology/MyClass",
     "http://example.com/ontology/MyOtherClass",
   ],
-} as const
+} as const;
 ```
 
 ### Entity property reference
@@ -81,7 +81,7 @@ const MyOtherSchema = {
 Each property defined in a schema must correspond to the following markup:
 
 ```ts
-import { rdf, xsd } from "ldkit/namespaces"
+import { rdf, xsd } from "ldkit/namespaces";
 const MySchema = {
   propertyShortName: {
     "@id": rdf.label, // RDF name of the property
@@ -90,7 +90,7 @@ const MySchema = {
     "@array": true, // if present, the resulting property is always an array
     "@multilang": true, // if present, the resulting property is a map of languages and literals
   },
-} as const
+} as const;
 ```
 
 Unless specified otherwise, it is assumed that any property is of type
@@ -101,19 +101,19 @@ In addition, there is a shortcut to specify default properties. The following
 two schemas are equivalent:
 
 ```ts
-import { schema } from "ldkit/namespaces"
+import { schema } from "ldkit/namespaces";
 
 const SchemaOne = {
   "@type": schema.Person,
   name: schema.name,
-} as const
+} as const;
 
 const SchemaTwo = {
   "@type": schema.Person,
   name: {
     "@id": schema.name,
   },
-}
+};
 ```
 
 ### Querying multi-lingual properties
@@ -127,7 +127,7 @@ const inputRdfData = `
   x:A
     a x:Item ;
     x:multilang "CS"@cs, "EN"@en, "Unknown" .
-`
+`;
 
 const schema = {
   "@type": x.Item,
@@ -135,7 +135,7 @@ const schema = {
     "@id": x.multilang,
     "@multilang": true,
   },
-}
+};
 
 const convertedData = {
   $id: x.A,
@@ -145,7 +145,7 @@ const convertedData = {
     en: "EN",
     [""]: "Unknown",
   },
-}
+};
 ```
 
 ### Using regular namespaces instead of aliases
@@ -157,7 +157,7 @@ data, you can use RDF identifiers instead of aliases.
 const MySchema = {
   "@type": schema.Person,
   [schema.name]: schema.name,
-}
+};
 ```
 
 ## Complete schema reference
@@ -204,27 +204,27 @@ const Thing = {
       nestedValue: x.nestedValue,
     },
   },
-} as const
+} as const;
 ```
 
 And the resulting type will be:
 
 ```ts
 type ThingType = {
-  $id: string
-  $type: string[]
-  required: string
-  optional: string | undefined
-  array: string[]
-  multilang: Record<string, string>
-  multilangArray: Record<string, string[]>
-  number: number
-  boolean: boolean
-  date: Date
+  $id: string;
+  $type: string[];
+  required: string;
+  optional: string | undefined;
+  array: string[];
+  multilang: Record<string, string>;
+  multilangArray: Record<string, string[]>;
+  number: number;
+  boolean: boolean;
+  date: Date;
   nested: {
-    $id: string
-    $type: string[]
-    nestedValue: string
-  }
-}
+    $id: string;
+    $type: string[];
+    nestedValue: string;
+  };
+};
 ```

@@ -1,8 +1,8 @@
-import { ComponentChildren } from "preact"
+import { ComponentChildren } from "preact";
 
 type TitleProps = {
-  children?: ComponentChildren
-}
+  children?: ComponentChildren;
+};
 
 export function Title({ children }: TitleProps) {
   return children
@@ -16,5 +16,5 @@ export function Title({ children }: TitleProps) {
       <title>
         {"FaaS3 · FaaS Based on Blockchain toolkit for Web3 developers"}
       </title>
-    )
+    );
 }

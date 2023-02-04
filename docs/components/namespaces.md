@@ -5,7 +5,7 @@ provide type safe access to all vocabulary terms as well as IDE auto-complete
 for the best developer experience.
 
 ```ts
-import { createNamespace } from "ldkit"
+import { createNamespace } from "ldkit";
 
 const onto = createNamespace(
   {
@@ -17,10 +17,10 @@ const onto = createNamespace(
       "subject",
     ],
   } as const,
-)
+);
 
-console.log(onto.subject) // prints http://www.example.com/ontology#subject
-console.log(onto.unknown) // TypeScript error! This term does not exist
+console.log(onto.subject); // prints http://www.example.com/ontology#subject
+console.log(onto.unknown); // TypeScript error! This term does not exist
 ```
 
 In addition to terms, namespaces include `$iri` and `$prefix` properties to
@@ -35,17 +35,17 @@ These ontologies are provided as a `ldkit/namespaces` subpackage. You can use
 them like this:
 
 ```ts
-import { rdf, schema } from "ldkit/namespaces"
+import { rdf, schema } from "ldkit/namespaces";
 
-console.log(rdf.type) // prints http://www.w3.org/1999/02/22-rdf-syntax-ns#type
-console.log(schema.Person) // prints http://schema.org/Person
+console.log(rdf.type); // prints http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+console.log(schema.Person); // prints http://schema.org/Person
 ```
 
 > If you are using Deno without the recommended import map, you can import
 > namespaces like this:
 >
 > ```ts
-> import { rdf, schema } from "https://deno.land/x/ldkit@$VERSION/mod.ts"
+> import { rdf, schema } from "https://deno.land/x/ldkit@$VERSION/mod.ts";
 > ```
 
 ### List of included namespaces
@@ -71,7 +71,7 @@ create a custom namespace to help you create LDkit schemas. Below is an example
 of such a namespace facilitating full text Lucene-based search in GraphDB.
 
 ```ts
-import { createNamespace } from "ldkit"
+import { createNamespace } from "ldkit";
 
 export const lucene = createNamespace(
   {
@@ -87,9 +87,9 @@ export const lucene = createNamespace(
       "score",
     ],
   } as const, // This line is important for inferring TypeScript types
-)
+);
 
-console.log(lucene.query) // prints http://www.ontotext.com/connectors/lucene#query
+console.log(lucene.query); // prints http://www.ontotext.com/connectors/lucene#query
 ```
 
 ## Using namespaces in a schema
@@ -98,7 +98,7 @@ Using namespaces in schema is optional, but recommended. You can use namespace
 terms as keys, or you can use even shorter aliases.
 
 ```ts
-import { dbo, rdfs } from "ldkit/namespaces"
+import { dbo, rdfs } from "ldkit/namespaces";
 // Create a schema
 const PersonSchema = {
   "@type": dbo.Person,
@@ -108,5 +108,5 @@ const PersonSchema = {
     "@id": dbo.birthDate,
     "@type": xsd.date,
   },
-} as const
+} as const;
 ```

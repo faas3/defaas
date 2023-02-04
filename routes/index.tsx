@@ -1,8 +1,8 @@
-import { Head } from "$fresh/runtime.ts"
-import { App } from "../components/App.tsx"
-import { Jumbo } from "../components/Jumbo.tsx"
-import { IconArrowRight } from "../components/Icons.tsx"
-import { Markdown } from "../components/Markdown.tsx"
+import { Head } from "$fresh/runtime.ts";
+import { App } from "../components/App.tsx";
+import { Jumbo } from "../components/Jumbo.tsx";
+import { IconArrowRight } from "../components/Icons.tsx";
+import { Markdown } from "../components/Markdown.tsx";
 
 export default function Home() {
   return (
@@ -33,23 +33,10 @@ export default function Home() {
             <IconArrowRight />
           </a>
         </div>
-
-        {/* <Steps /> */}
-
-        {
-          /* <p class="text-center pt-4 md:pt-8 pb-5 md:pb-10">
-          <a
-            href="/docs"
-            class="text-l md:text-xl flex flex-row gap-4 bg-red-800 rounded text-white p-4 md:p-6"
-          >
-            <span>Read the documentation</span> <IconArrowRight />
-          </a>
-        </p> */
-        }
       </div>
       <Features />
     </App>
-  )
+  );
 }
 
 const helpMarkdown = `
@@ -68,88 +55,7 @@ Commands:
 Options:
   -h, --help     Print help
   -V, --version  Print version
-`
-
-const step1Markdown = `
-import { type Context, setDefaultContext } from "ldkit";
-
-const context: Context = {
-  sources: ["https://dbpedia.org/sparql"],
-};
-
-setDefaultContext(context);
-`
-
-const step2Markdown = `
-import { dbo, rdfs, xsd } from "ldkit/namespaces";
-
-const PersonSchema = {
-  "@type": dbo.Person,
-  name: rdfs.label,
-  abstract: dbo.abstract,
-  birthDate: {
-    "@id": dbo.birthDate,
-    "@type": xsd.date,
-  },
-} as const;
-`
-
-const step3Markdown = `
-import { createLens } from "ldkit";
-
-const Persons = createLens(PersonSchema);
-
-const adaIri = "http://dbpedia.org/resource/Ada_Lovelace";
-const ada = await Persons.findByIri(adaIri);
-
-console.log(ada.name); // Ada Lovelace
-console.log(ada.birthDate); // Date object of 1815-12-10
-`
-
-function Steps() {
-  return (
-    <div class="mt-10 md:mt-20 grid md:grid-cols-2 gap-2 md:gap-0">
-      <div>
-        <h2 class="pb-5 text-2xl md:text-4xl font-black">
-          1. Write a function in Gist
-        </h2>
-        <p class="md:mx-10 text-l md:text-xl">
-          Gist is an easy method to share snippets or excerpts of data with
-          others.A gist can be either public or secret.
-        </p>
-      </div>
-      <div class="pb-4">
-        <Markdown markdown={step2Markdown} />
-      </div>
-      <div>
-        <h2 class="pb-5 text-2xl md:text-4xl font-black">
-          2. Publish it to blockchain
-        </h2>
-        <p class="md:mx-10 text-l md:text-xl">
-          FaaS Upload can publish all valid code snippet to stored on
-          blockchain. Uploading the code is achieved through dApp/Plugin which
-          is decoupled from FaaS.
-        </p>
-      </div>
-      <div class="pb-4">
-        <Markdown markdown={step1Markdown} />
-      </div>
-      <div>
-        <h2 class="pb-5 text-2xl md:text-4xl font-black">
-          3. Fetch your function!
-        </h2>
-        <p class="md:mx-10 text-l md:text-xl">
-          FaaS is a distributed Open Source FaaS platform. Individuals and
-          developers can build their own FaaS service and customize their own
-          on-chain functions and modules for different types of usage.
-        </p>
-      </div>
-      <div class="pb-4">
-        <Markdown markdown={step3Markdown} />
-      </div>
-    </div>
-  )
-}
+`;
 
 function Features() {
   return (
@@ -171,5 +77,5 @@ function Features() {
         {/* <p>Compatible or built upon all the popular RDF/JS libraries</p> */}
       </div>
     </div>
-  )
+  );
 }

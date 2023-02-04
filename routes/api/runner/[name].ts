@@ -1,19 +1,17 @@
 import { HandlerContext } from "$fresh/server.ts";
-import { Database } from "../../../utils/database.ts";
+import { db } from "../../../utils/database.ts";
 import { importString } from "https://deno.land/x/import@v0.1.6/mod.ts";
-
-const db = new Database();
 
 export const handler = async (
   _req: Request,
-  _ctx: HandlerContext
+  _ctx: HandlerContext,
 ): Promise<Response> => {
   if (_req.method != "POST") {
     return Response.json({ error: "only support post" });
   }
 
   const { name } = _ctx.params;
-  const data = await db.find_by_name(name);
+  const data = await db.findByName(name);
   const func = data[0];
   let payload = await _req.json();
   if (typeof payload == "string") {

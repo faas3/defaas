@@ -1,15 +1,15 @@
-import type { ComponentChildren } from "preact"
-import { Head } from "$fresh/runtime.ts"
+import type { ComponentChildren } from "preact";
+import { Head } from "$fresh/runtime.ts";
 
-import { Footer } from "./Footer.tsx"
-import { type ActiveLink, Header } from "./Header.tsx"
-import { Title } from "./Title.tsx"
+import { Footer } from "./Footer.tsx";
+import { type ActiveLink, Header } from "./Header.tsx";
+import { Title } from "./Title.tsx";
 
 type AppProps = {
-  children: ComponentChildren
-  activeLink: ActiveLink
-  title?: string
-}
+  children: ComponentChildren;
+  activeLink: ActiveLink;
+  title?: string;
+};
 
 export function App({ children, activeLink, title }: AppProps) {
   return (
@@ -23,5 +23,5 @@ export function App({ children, activeLink, title }: AppProps) {
         <Footer />
       </div>
     </>
-  )
+  );
 }

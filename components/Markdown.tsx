@@ -1,8 +1,8 @@
-import { gfm } from "../utils/markdown.ts"
+import { gfm } from "../utils/markdown.ts";
 
 export function Markdown({ markdown }: { markdown: string }) {
-  const preMarkdown = `\`\`\`ts${markdown}\`\`\``
-  const html = gfm.render(preMarkdown)
+  const preMarkdown = `\`\`\`ts${markdown}\`\`\``;
+  const html = gfm.render(preMarkdown);
   return (
     <div
       class="markdown-body max-w-[90vw]"
@@ -11,5 +11,5 @@ export function Markdown({ markdown }: { markdown: string }) {
       data-dark-theme="dark"
       dangerouslySetInnerHTML={{ __html: html }}
     />
-  )
+  );
 }
