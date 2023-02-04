@@ -4,7 +4,7 @@ import { importString } from "https://deno.land/x/import@v0.1.6/mod.ts";
 
 export const handler = async (
   _req: Request,
-  _ctx: HandlerContext,
+  _ctx: HandlerContext
 ): Promise<Response> => {
   if (_req.method != "POST") {
     return Response.json({ error: "only support post" });
@@ -18,16 +18,8 @@ export const handler = async (
     payload = JSON.parse(payload);
   }
 
-  console.log("function content: ");
-  console.log(func.content);
-
-  console.log("\n--------function log start---------");
-  const mod = await importString(func.content);
+  const mod = await importString(func.content ?? "");
   const result = await mod.handler(payload);
-  console.log("--------function log end-----------\n");
-
-  console.log("function result: ");
-  console.log(result);
 
   return Response.json(result);
 };

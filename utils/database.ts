@@ -15,7 +15,6 @@ class Database {
 
   async insertMove(data: Array<MoveFunc>) {
     const res = await this.#client.from("move_functions").insert(data);
-    console.log(res);
     return res;
   }
 

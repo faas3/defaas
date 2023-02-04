@@ -10,7 +10,6 @@ export const handler = async (
   }
 
   const payload = await _req.json();
-  console.log(`payload: ${payload}`);
   const result = await db.insertMove([payload]);
   return Response.json(result);
 };
